@@ -1,0 +1,473 @@
+/*
+    Projet SAE
+    Crouskie WEB
+    https://forge.univ-lyon1.fr/p2100126/crouskie-sa
+
+    Elliot CASNA, Anne PASSELEGUE, Thomas WARRIER, Marc BERIOT, Virgile MENARD-BEDIANT
+
+    Ce fichier CSS regroupe tout les éléments commun aux différentes pages,
+    si une page nécessite un css spécifique, il faut lui dédier un fichier CSS
+
+*/
+
+
+/*=========== Imports (Fonts) ==========*/
+
+/*
+    Exemple d'import : 
+
+    @import url('https://fonts.googleapis.com/css2?family=Courgette&family=Fredoka:wght@300;400;500&display=swap');
+
+*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+
+/*============ Variables CSS ============*/
+
+:root{
+    /*============ Couleurs ============*/
+
+    --primary-color: #E10512;
+    --secondary-color: #F9CDD0;
+    --background-color: #EBF1F4;
+    --background-accent-color: #B1BBC9;
+    --dark-color-light: #484646d8;
+    --valid-color: #82E105;
+    /* --background-gradient: linear-gradient(120deg, var(--first-color) 0%, var(--second-color) 100%);
+    --reverse-background-gradient: linear-gradient(120deg, var(--second-color) 0%, var(--first-color) 100%); */
+    --text-color: rgb(255, 255, 255);
+    --dark-text-color: rgb(1, 1, 1);
+    --box-shadow: 0 4px 15px 5px rgba(0, 0, 0, 0.25);
+    --box-shadow-small : 0 4px 4px rgba(0, 0, 0, 0.25);
+
+    /*============ Fonts et typo ============*/
+
+    --main-font: "Montserrat", sans-serif;
+    --h1-font-size: 2.5rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --bigger-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.25rem;
+    --smallest-font-size: 0.125rem;
+
+    /*============ Fonts weight ============*/
+
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+
+    /*============== Effects ===============*/
+
+    --border-radius: 15px;
+    --blur: blur(5px);
+    -webkit-font-smoothing: antialiased;
+
+    /* Font */
+    font-family: var(--main-font);
+}
+
+/*============ CSS Globale ============*/
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--background-color);
+}
+
+
+/* Permet de cacher les élément possédant la class hidden */
+*.hidden{
+    display: none !important;
+}
+
+/* ============ Propriétés globales ============ */
+
+
+/* Les flexs */
+.flex{
+    display: flex;
+}
+
+.flex.row{
+    flex-flow: row;
+}
+
+.flex.column{
+    flex-flow: column;
+}
+
+.flex.wrap{
+    flex-wrap: wrap;
+}
+
+.flex.center{
+    align-items: center;
+    justify-content: center;
+}
+
+/* Si on veut une bordure ronde sur les composants */
+.rounded{
+    border-radius: var(--border-radius);
+}
+
+.circle{
+    border-radius: 35px;
+}
+
+
+
+/*============ Styles ============*/
+
+a.underlined,
+p.underlined{
+    text-decoration: underline;
+}
+
+/*============ Extra ============*/
+
+.blured{
+    filter: var(--blur);
+}
+
+.shadow{
+    box-shadow: var(--box-shadow);
+}
+
+.shadow-small{
+    box-shadow: var(--box-shadow-small);
+}
+
+/*============ Composants Basiques ============*/
+
+.card{
+    background-color: white;
+    color: var(--primary-color);
+    /* width: fit-content;
+    height: fit-content; */
+    padding: 40px 30px 40px 30px;
+}
+
+/*============ Inputs ============*/
+
+button,
+input[type=submit],
+input[type=button]{
+    /* Propriétés basiques */
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border: none;
+    cursor: pointer;
+
+    /* Fonts */
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: var(--font-medium);
+
+    /* Size */
+    width: 100%;
+    height: 100%;
+    
+    /* Transition pour le hover, focus... */
+    /* TODO spécifier la propriété */
+    -webkit-transition: 0.3s ease-out;
+    -moz-transition: 0.3s ease-out;
+    -o-transition: 0.3s ease-out;
+    transition: 0.3s ease-out;
+}
+
+button.outlined{
+    background-color: transparent;
+    border: 3px solid;
+    color: inherit
+}
+
+/* Faire bouton hover */
+
+input[type=text],
+input[type=password],
+input[type=email]
+{
+    /* Propriétés basiques */
+    padding: 0.5rem;
+    border: solid #6d6b6b84 1px;
+    color: var(--dark-text-color);
+
+    /* Fonts */
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: var(--font-regular);
+
+    /* Size */
+    height: 50px;
+    width: 100%;
+}
+
+input[type=text]::-webkit-input-placeholder,
+input[type=password]::-webkit-input-placeholder,
+input[type=email]::-webkit-input-placeholder{
+    font-weight: var(--font-regular);
+    color: var(--dark-color-light);
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus
+{
+    outline: none;
+    border: solid #6d6b6b84 2px;
+    transition: 0.4s;
+}
+
+/* Pour des champs invalides (ici seulement du text*/
+
+/* input[type=text]:invalid,
+input[type=password]:invalid,
+input[type=email]:invalid
+{
+    border: solid var(--primary-color) 2px;
+} */
+
+input[type=text]:required:valid,
+input[type=password]:required:valid,
+input[type=email]:required:valid
+{
+    border: solid var(--valid-color) 2px;
+}
+
+/* Non fonctionnel actuellement */
+/* input.icon{
+    background-image: attr(data-icon url);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 30px;
+} */
+
+
+/* TODO les propriétés hover et focus du bouton et du input */
+
+/* Les liens de navigations */
+a{
+    color: inherit;
+    text-decoration: none;
+    font-weight: var(--font-medium);
+}
+
+
+/*============ Composants basiques divers ============*/
+
+/* Pour rendre un composant html compatible avec une icone */
+.icon{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: inherit;
+}
+
+iconify-icon{
+    font-size: 30px;
+}
+
+/* permet d'afficher un nombre au centre de l'icone */
+.icon.counter::after{
+    content: attr(data-number);
+    position: absolute;
+    left: 13px;
+    top: 18px;
+    font-size: 0.8rem;
+    color: inherit;
+}
+
+.icon-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.4rem;
+    min-height: 30px;
+    min-width: 30px;
+}
+/* Hero */
+.hero{
+    height: 100vh;
+    color: white;
+}
+
+.hero img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    
+}
+
+/*============ Composants Complexes ============*/
+
+.header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+
+    padding: 1rem;
+    background-color: white;
+    color: var(--primary-color);
+    align-items: center; 
+
+    /* animation */
+    animation: 0.7s ease-out 0s 1 slideInFromTop, 1s ease-out 0s 1 opacityFadeIn;
+}
+
+    .header .nav{
+        flex:3;
+        justify-content: center;
+        gap: 4rem;
+        align-items: center;
+        height: 40px;
+    }
+
+    .header button{
+        margin-top: 0;
+    }
+
+    .header .right{
+        height: 40px;
+        gap: 0.5rem;
+    }
+
+    .header iconify-icon {
+        font-size: 35px;
+    }
+
+/* Header version transparent */
+
+.header.transparent{
+    background: linear-gradient(to bottom,#000000d4,transparent);
+    color: white;
+}
+
+.header.transparent button{
+    background-color: white;
+    color: black;
+}
+
+/*============ Footer ============*/
+
+.footer{
+    width: 100%;
+    padding: 2rem 0 2rem 0;
+    align-items: center;
+    gap: 1.5rem;
+    color: var(--primary-color);
+    overflow: hidden;
+    background-color: white;
+}
+
+.footer .icons-container{
+    gap: 1.5rem;
+}
+
+.footer p{
+    font-weight: var(--font-medium);
+}
+
+/* Partie avec le logo et les barres sur le coté */
+
+.footer .logo-container{
+    position: relative;
+}
+
+/* Barre droite */
+
+.footer .logo-container::after{
+    position: absolute;
+    left: 110%;
+    top: 50%;
+    content: "";
+    width: 25vw;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--primary-color);
+}
+
+/* Barre gauche */
+
+.footer .logo-container::before{
+    position: absolute;
+    right: 110%;
+    top: 50%;
+    content: "";
+    width: 25vw;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--primary-color);
+}
+
+/*============ Animations ============*/
+
+
+/*============ Translations ============*/
+
+@keyframes slideInFromTop {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+      transform: translateX(+100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+}
+
+
+@keyframes slideInFromBottom {
+    0% {
+      transform: translateY(+100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+}
+
+/*============ Opacity ============*/
+
+@keyframes opacityFadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+@keyframes opacityFadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+}

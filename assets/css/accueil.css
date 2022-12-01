@@ -1,0 +1,16 @@
+
+.hero div{
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+}
+.hero button{
+    margin-top: 50px;
+    background-color: var(--background-color);
+    background-color: white;
+    color: black;
+    width: 150px;
+    height: 40px;
+}
